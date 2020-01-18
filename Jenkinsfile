@@ -88,7 +88,7 @@ pipeline {
         }
         stage ('deploy'){
             steps {
-                script {
+               
                echo 'deployment started'
             //   sh 'mkdir old-versions'
                sh 'mv /root/.jenkins/workspace/maven-project/target  /root/.jenkins/workspace/maven-project/target/old-versions'
