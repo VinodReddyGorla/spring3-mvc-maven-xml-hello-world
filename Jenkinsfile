@@ -37,6 +37,7 @@ pipeline {
                           sh 'mvn -Dmaven.test.failure.ignore=true clean package'
                     }
                     else {
+                        currentBuild.result = 'ABORTED'
                         echo "this is not a master branch" 
                     }
                 }
