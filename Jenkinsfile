@@ -91,7 +91,7 @@ pipeline {
                
                echo 'deployment started'
             //   sh 'mkdir old-versions'
-               sh 'mv /root/.jenkins/workspace/maven-project/target  /root/.jenkins/workspace/maven-project/target/old-versions'
+               sh 'mv /root/.jenkins/workspace/maven-project/target/*.${pom.packaging}  /root/.jenkins/workspace/maven-project/target/old-versions'
          //  bat '''copy C:\\Users\\Madhu\\.jenkins\\workspace\\jmsth20-pipeline-tomcat\\target\\*.war F:\\softwares\\apache-tomcat-7.0.53\\webapps\\'''
        
                     
