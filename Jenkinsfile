@@ -89,7 +89,7 @@ pipeline {
         stage ('deploy'){
             steps {
                 
-                sh 'mv /root/.jenkins/workspace/maven-project/target/*.war  /root/.jenkins/workspace/maven-project/maven-project-backup
+                sh 'mv /root/.jenkins/workspace/maven-project/target/*.war  /root/.jenkins/workspace/maven-project/maven-project-backup'
          //         bat '''copy C:\\Users\\Madhu\\.jenkins\\workspace\\jmsth20-pipeline-tomcat\\target\\*.war F:\\softwares\\apache-tomcat-7.0.53\\webapps\\'''
        
             }
