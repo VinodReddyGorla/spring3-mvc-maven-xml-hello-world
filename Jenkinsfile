@@ -32,7 +32,7 @@ pipeline {
                 script {
                     // If you are using Windows then you should use "bat" step
                     // Since unit testing is out of the scope we skip them
-                    if (env.BRANCH_NAME != 'master'){
+                    if (env.BRANCH_NAME == 'master'){
                           echo " packaging master branch" 
                           sh 'mvn -Dmaven.test.failure.ignore=true clean package'
                     }
