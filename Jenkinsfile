@@ -22,20 +22,17 @@ pipeline {
     stages {
         stage("clone code") {
             steps {
-                //script {
                     // Let's clone the source
                     git 'https://github.com/VinodReddyGorla/spring3-mvc-maven-xml-hello-world.git';
-                //}
             }
         }
         stage("mvn build") {
             steps {
-                script {
+                //script {
                     // If you are using Windows then you should use "bat" step
                     // Since unit testing is out of the scope we skip them
                      sh 'mvn -Dmaven.test.failure.ignore=true clean package'
-                  //  bat(/${MAVEN_HOME}\bin\mvn -Dmaven.test.failure.ignore clean package/)
-                }
+              //  }
             }
         }
         stage("publish to nexus") {
