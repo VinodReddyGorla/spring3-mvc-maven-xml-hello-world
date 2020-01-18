@@ -21,6 +21,7 @@ pipeline {
     }
     stages {
         stage("clone code") {
+            
             steps {
                     // Let's clone the source
                     git 'https://github.com/VinodReddyGorla/spring3-mvc-maven-xml-hello-world.git';
@@ -31,7 +32,12 @@ pipeline {
                 script {
                     // If you are using Windows then you should use "bat" step
                     // Since unit testing is out of the scope we skip them
-                     sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+                    if (env.BRANCH_NAME == 'master'){
+                       echo " packaging master branch" 
+                       sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+                    }
+                    else{
+                        echo "this is not a master branch"
                 }
             }
         }
