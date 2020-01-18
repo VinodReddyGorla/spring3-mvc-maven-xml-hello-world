@@ -22,10 +22,10 @@ pipeline {
     stages {
         stage("clone code") {
             steps {
-                script {
+                //script {
                     // Let's clone the source
                     git 'https://github.com/VinodReddyGorla/spring3-mvc-maven-xml-hello-world.git';
-                }
+                //}
             }
         }
         stage("mvn build") {
