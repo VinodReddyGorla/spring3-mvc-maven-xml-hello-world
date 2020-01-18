@@ -37,7 +37,8 @@ pipeline {
                        sh 'mvn -Dmaven.test.failure.ignore=true clean package'
                     }
                     else{
-                        echo "this is not a master branch"
+                        echo "this is not a master branch" 
+                    }
                 }
             }
         }
