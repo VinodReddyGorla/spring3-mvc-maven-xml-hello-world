@@ -56,7 +56,7 @@ pipeline {
                             nexusUrl: NEXUS_URL,
                             groupId: pom.groupId,
                           //  version: '${BUILD_NUMBER}',
-                            version: 'pom.version',
+                            version: pom.version,
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
