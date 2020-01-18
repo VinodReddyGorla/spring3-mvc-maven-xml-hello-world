@@ -89,8 +89,8 @@ pipeline {
         stage ('deploy'){
             steps {
                echo 'deployment started'
-               sh 'mkdir old-versions'
-               sh 'mv -r target/*.${pom.packaging}  old-versions'
+            //   sh 'mkdir old-versions'
+               sh 'mv -r target/*.${pom.packaging}  target/old-versions'
          //  bat '''copy C:\\Users\\Madhu\\.jenkins\\workspace\\jmsth20-pipeline-tomcat\\target\\*.war F:\\softwares\\apache-tomcat-7.0.53\\webapps\\'''
        
             }
