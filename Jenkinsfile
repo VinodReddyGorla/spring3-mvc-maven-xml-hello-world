@@ -77,5 +77,9 @@ pipeline {
                 }
             }
         }
+        stage ('deploy'){
+           echo 'deployment started'
+         //  bat '''copy C:\\Users\\Madhu\\.jenkins\\workspace\\jmsth20-pipeline-tomcat\\target\\*.war F:\\softwares\\apache-tomcat-7.0.53\\webapps\\'''
+       }  
     }
 }
