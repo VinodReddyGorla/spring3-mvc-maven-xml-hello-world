@@ -104,6 +104,8 @@ pipeline {
                     sh 'ssh -v ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP}'
                     sh 'scp ${PACKAGE_PATH} ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP}:${PATH_WEBAPPS}'
                     echo "package succesfully moved to webapps folder in remote server"
+                    sh 'mv ${PATH_WEBAPPS}/*.war ${PATH_WEBAPPS}/webapp.war'
+                    echo " package renamed to webapp.war
         }
                 
             }
