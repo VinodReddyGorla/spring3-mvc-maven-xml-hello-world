@@ -18,6 +18,14 @@ pipeline {
         NEXUS_REPOSITORY = "maven-test1"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus_credentials"
+        // tomcat credential id for ssh authentiation
+        TOMCAT_CREDENTIAL_ID = "tomcat-sshpk"
+        // tomcat server user name
+        TOMCAT_SERVER_USER = "vinod"
+        // tomcat server IP
+        TOMCAT_CREDENTIAL_ID = "192.168.0.110"
+        // deployment path
+        PATH_WEBAPPS = "/opt/tomcat8/webapps"
     }
     stages {
         stage("clone code") {
@@ -89,10 +97,10 @@ pipeline {
         stage ('deploy'){
             steps {
                 
-                sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
-                sh 'ssh -o StrictHostKeyChecking=no user@hostname.com uptime'
-                sh 'ssh -v user@hostname.com'
-                sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+                sshagent(credentials : ['TOMCAT_CREDENTIAL_ID']) {
+                sh 'ssh -o StrictHostKeyChecking=no TOMCAT_SERVER_USER@TOMCAT_CREDENTIAL_ID uptime'
+                //sh 'ssh -v user@hostname.com'
+                //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
         }
                 
             }
