@@ -89,9 +89,12 @@ pipeline {
         stage ('deploy'){
             steps {
                 
-                sh 'mv /root/.jenkins/workspace/maven-project/target/*.war  /root/.jenkins/workspace/maven-project/maven-project-backup'
-         //         bat '''copy C:\\Users\\Madhu\\.jenkins\\workspace\\jmsth20-pipeline-tomcat\\target\\*.war F:\\softwares\\apache-tomcat-7.0.53\\webapps\\'''
-       
+                sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+                sh 'ssh -o StrictHostKeyChecking=no user@hostname.com uptime'
+                sh 'ssh -v user@hostname.com'
+                sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+        }
+                
             }
         }
     }
