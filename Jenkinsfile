@@ -101,7 +101,7 @@ pipeline {
                 
                 sshagent(credentials : ['TOMCAT_CREDENTIAL_ID']) {
                     sh 'ssh -o StrictHostKeyChecking=no ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP} uptime'
-                    sh 'ssh -v user@hostname.com'
+                    sh 'ssh -v ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP}'
                     sh 'scp ${PACKAGE_PATH} ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP}:${PATH_WEBAPPS}'
                     echo "package succesfully moved to webapps folder in remote server"
         }
