@@ -23,7 +23,7 @@ pipeline {
         // tomcat server user name
         TOMCAT_SERVER_USER = "vinod"
         // tomcat server IP
-        TOMCAT_CREDENTIAL_ID = "192.168.0.110"
+        TOMCAT_SERVER_IP = "192.168.0.110"
         // deployment path
         PATH_WEBAPPS = "/opt/tomcat8/webapps"
     }
@@ -98,7 +98,7 @@ pipeline {
             steps {
                 
                 sshagent(credentials : ['TOMCAT_CREDENTIAL_ID']) {
-                sh 'ssh -o StrictHostKeyChecking=no TOMCAT_SERVER_USER@TOMCAT_CREDENTIAL_ID uptime'
+                sh 'ssh -o StrictHostKeyChecking=no TOMCAT_SERVER_USER@TOMCAT_SERVER_IP uptime'
                 //sh 'ssh -v user@hostname.com'
                 //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
         }
