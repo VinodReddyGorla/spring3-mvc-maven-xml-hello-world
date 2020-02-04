@@ -26,6 +26,8 @@ pipeline {
         TOMCAT_SERVER_IP = "192.168.0.110"
         // deployment path
         PATH_WEBAPPS = "/opt/tomcat8/webapps"
+        // package source path
+        PACKAGE_PATH = "/root/.jenkins/workspace/maven-project/target/*.war"
     }
     stages {
         stage("clone code") {
@@ -98,9 +100,10 @@ pipeline {
             steps {
                 
                 sshagent(credentials : ['TOMCAT_CREDENTIAL_ID']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP} cat /home/vinod/info'
-                //sh 'ssh -v user@hostname.com'
-                //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+                    sh 'ssh -o StrictHostKeyChecking=no ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP} uptime'
+                    sh 'ssh -v user@hostname.com'
+                    sh 'scp ${PACKAGE_PATH} ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP}:${PATH_WEBAPPS}'
+                    echo "package succesfully moved to webapps folder in remote server"
         }
                 
             }
