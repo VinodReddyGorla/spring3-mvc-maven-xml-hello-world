@@ -98,7 +98,7 @@ pipeline {
             steps {
                 
                 sshagent(credentials : ['TOMCAT_CREDENTIAL_ID']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP} uptime'
+                    sh 'ssh -o StrictHostKeyChecking=no ${TOMCAT_SERVER_USER}@${TOMCAT_SERVER_IP} cat /home/vinod/info'
                 //sh 'ssh -v user@hostname.com'
                 //sh 'scp ./source/filename user@hostname.com:/remotehost/target'
         }
